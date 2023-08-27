@@ -9,7 +9,6 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^39.0.1",
     "@ckeditor/ckeditor5-track-changes": "^39.0.1",
     "@ckeditor/ckeditor5-vue2": "^3.0.1",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",

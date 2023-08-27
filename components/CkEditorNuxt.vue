@@ -1,4 +1,4 @@
-// components/ckeditornuxt
+<!-- // components/ckeditornuxt
 
 <template>
   <ckeditor
@@ -58,4 +58,4 @@ export default {
     }
   },
 };
-</script>
+</script> -->
