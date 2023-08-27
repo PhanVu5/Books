@@ -1,0 +1,43 @@
+{
+  "name": "Books",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^39.0.1",
+    "@ckeditor/ckeditor5-track-changes": "^39.0.1",
+    "@ckeditor/ckeditor5-vue2": "^3.0.1",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/vue-fontawesome": "^2.0.10",
+    "@nuxt/content": "^2.7.2",
+    "@nuxtjs/axios": "^5.13.6",
+    "core-js": "^3.25.3",
+    "nuxt": "^2.15.8",
+    "swiper": "^10.1.0",
+    "vue": "^2.7.10",
+    "vue-persistedstate": "^1.2.5",
+    "vue-plain-pagination": "^0.3.0",
+    "vue-server-renderer": "^2.7.10",
+    "vue-slick-carousel": "^1.0.6",
+    "vue-star-rating": "^1.7.0",
+    "vue-template-compiler": "^2.7.10",
+    "vue-tippy": "v4",
+    "vuex-persistedstate": "^4.1.0"
+  },
+  "devDependencies": {
+    "@nuxt/image": "^1.0.0-rc.1",
+    "@nuxtjs/tailwindcss": "^5.3.3",
+    "postcss": "^8.4.17",
+    "push-dir": "^0.4.1",
+    "sass": "^1.64.1",
+    "sass-loader": "10"
+  }
+}
