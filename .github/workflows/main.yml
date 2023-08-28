@@ -30,8 +30,8 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # publish_dir: ./dist # Thay đổi thành thư mục bạn muốn triển khai
-          publish_branch: gh-pages # Nhánh mà bạn muốn triển khai đến
+          publish_dir: ./dist # Thay đổi thành thư mục bạn muốn triển khai
+          # publish_branch: gh-pages # Nhánh mà bạn muốn triển khai đến
 
 
 
