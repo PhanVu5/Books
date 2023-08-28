@@ -51,6 +51,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxt/image',
     '@nuxt/content',
+    "vue2-editor/nuxt",
   ],
   axios: {
     // proxy: true
