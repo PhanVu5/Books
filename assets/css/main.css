@@ -593,12 +593,12 @@ body {
         height: 28vh;
         border-radius: 8px;
     }
-    
+
     .slick-slide img:hover {
         transform: scale(1.1);
         transition: all .3s ease-in-out;
     }
-    
+
     .my_carousel .slick-slide .text_book_slider {
         display: none;
     }
@@ -667,10 +667,16 @@ body {
         margin-top: 40%;
     }
 
+    .container_account {
+        top: 19vh;
+        left: 0;
+        width: 75vw;
+    }
+
     #content .box {
-        width: 9rem;
-        height: 14rem;
+        height: 57vw;
         margin: 3% 4%;
+        width: 37vw;
     }
 
 

@@ -9,6 +9,9 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^39.0.1",
+    "@ckeditor/ckeditor5-vue2": "^3.0.1",
+    "@fancyapps/fancybox": "https://github.com/fancyapps/fancybox#5cda5b529ce3fb6c167a55d42ee5a316e921d95f",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
@@ -27,7 +30,6 @@
     "vue-star-rating": "^1.7.0",
     "vue-template-compiler": "^2.7.10",
     "vue-tippy": "v4",
-    "vue2-editor": "^2.10.3",
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {

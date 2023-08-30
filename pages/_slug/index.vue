@@ -84,7 +84,7 @@
 
 
             <div class="your_cmt">
-              <vue-editor v-model="yourComment"></vue-editor>
+              <CkEditorNuxt v-model="yourComment" />
               <button class="submit_cmt" @click="UpComment" :disabled="disableCmt">
                 <font-awesome-icon :icon="['fas', 'check']" class="icon-check" />
                 <div class="icon_submit">
@@ -216,12 +216,12 @@
 <script>
 import acceptAction from "@/components/acceptAction.vue";
 import StarRating from 'vue-star-rating';
-import { VueEditor } from "vue2-editor";
+import CkEditorNuxt from "@/components/CkEditorNuxt";
 export default {
   layout: "frameHome",
   components: {
-    VueEditor,
     StarRating,
+    CkEditorNuxt,
     acceptAction,
   },
   data() {
