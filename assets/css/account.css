@@ -145,3 +145,10 @@ form {
     transform: translateX(-100%);
 }
 
+@media screen and (max-width: 600px) {
+    .container_account {
+        top: 19vh;
+        left: 0;
+        width: 75vw;
+    }
+}
