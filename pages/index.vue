@@ -92,6 +92,7 @@
 
 
         </div>
+        <RankBooks></RankBooks>
       </div>
     </content>
 
@@ -121,10 +122,12 @@ import Pagination from '@/components/Pagination.vue';
 // *********************************
 import StarRating from 'vue-star-rating';
 import tippy from 'tippy.js';
+import RankBooks from '@/components/RankBooks';
 export default {
   layout: "frameHome",
   components: {
     StarRating,
+    RankBooks,
     VueSlickCarousel,
     SignUp,
     SignIn,
@@ -156,6 +159,13 @@ export default {
             breakpoint: 480,
             settings: {
               slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 4,
               slidesToScroll: 1
             }
           }

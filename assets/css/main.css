@@ -184,6 +184,7 @@ body {
 .border_img_slider {
     height: 233.266px;
     border-radius: 8px;
+    border: 1px solid #999;
     overflow: hidden;
 }
 
@@ -469,7 +470,7 @@ body {
     background-color: #fff !important;
 }
 
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     :root {
         --height-header: 8rem;
         --width-screen: 100%;
@@ -584,6 +585,7 @@ body {
     .border_img_slider {
         height: 28vh;
         border-radius: 8px;
+        border: 1px solid #999;
         overflow: hidden;
     }
 
@@ -813,5 +815,25 @@ body {
     .pagination-link--active {}
 
     .pagination-link--disabl {}
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 
 }
