@@ -102,10 +102,10 @@ export default {
     },
     methods: {
         isInFirstPage() {
-            this.disabledFirst = this.currentPage === 1;
+            this.disabledFirst = this.currentPage <= 1;
         },
         isInLastPage() {
-            this.disabledLast = this.currentPage === this.totalPages;
+            this.disabledLast = this.currentPage >= this.totalPages;
         },
         onClickFirstPage() {
             console.log(2);

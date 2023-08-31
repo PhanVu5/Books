@@ -60,7 +60,7 @@ export default {
         },
         async fetchPost() {
             try {
-                if(this.name === "" && this.account === "" && this.password === ""){
+                if(this.name === "" && !this.account.includes('@') && this.account === "" && this.password === ""){
                     this.faulty = 'You entered the wrong account, name or password';
                 } else {
                     this.faulty = '';
@@ -68,7 +68,7 @@ export default {
 
                 this.loadingLogin = true
                 const check = await this.fetchGet();
-                const conditions = this.name !== "" && this.account !== "" && check && this.password !== "";
+                const conditions = this.name !== "" && this.account.includes('@') && this.account !== "" && check && this.password !== "";
                 if (conditions) {
                     this.$axios.$post(this.url, {
                         name: this.name,
