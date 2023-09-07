@@ -17,7 +17,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="box_rank">
                 <div class="table_box_rank" v-for="(book, index) in RankBooks.items">
                     <h1 class="text_top" v-if="index < 9">{{ '0' + (index + 1) }}</h1>
@@ -32,24 +31,18 @@
                 </div>
             </div>
 
-            <div class="slomotion none">
-                <!-- SPINNING SQUARES -->
-                <div class="spinner-box">
-                    <div class="configure-border-1">
-                        <div class="configure-core"></div>
-                    </div>
-                    <div class="configure-border-2">
-                        <div class="configure-core"></div>
-                    </div>
-                </div>
-            </div>
+            <Loading class="none"></Loading>
         </div>
         <slot></slot>
     </div>
 </template>
 
 <script>
+import Loading from "@/components/Loading";
 export default {
+    components: {
+        Loading
+    },
     data() {
         return {
             disiable: false,
@@ -81,6 +74,14 @@ export default {
             const refs = this.$refs;
             refs.type_top.querySelector('.slomotion').setAttribute("class", "slomotion");
             refs.type_top.querySelector('.box_rank').setAttribute("class", "box_rank none");
+
+
+            await Promise((resolve) => {
+                setTimeout(() => {
+                    resolve()
+                }, 5000);
+            })
+
             this.RankBooks = [];
             if (classActive === 'day') {
                 this.RankBooks = this.RankDay;                
