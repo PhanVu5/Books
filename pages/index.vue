@@ -92,8 +92,9 @@
 
 
         </div>
-        <RankBooks></RankBooks>
+        <!-- <RankBooks :RankDay="RankDay"></RankBooks> -->
       </div>
+      <RankBooks></RankBooks>
     </content>
 
     <!-- // Pagination -->
@@ -150,7 +151,7 @@ export default {
         "autoplaySpeed": 3000, // Tốc độ tự động nhảy (3 giây)
         "arrows": true,
         "useTransform": true,
-        "slidesToShow": 6,
+        "slidesToShow": 7,
         "slidesToScroll": 2,
         "touchThreshold": 3,
         "touchMove": true,
@@ -201,7 +202,8 @@ export default {
     },
     currentPage() {
       return this.$store.state.user.objPage;
-    }
+    },
+    
   },
   methods: {
     // Get

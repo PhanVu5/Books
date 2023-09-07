@@ -144,7 +144,6 @@ export default {
                         search: this.search,
                     },
                 });
-                console.log('getBook', data);
                 this.$store.dispatch('user/user_DataBook', data);
                 this.objPage.totalPages = data.totalPages;
                 this.$store.dispatch('user/user_CurrentPage', this.objPage);

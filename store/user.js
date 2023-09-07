@@ -1,5 +1,10 @@
+import axios from 'axios';
+
 export const state = () => ({
   DataBook: {},
+  dataTopDay: {},
+  dataTopWeek: {},
+  dataTopMonth: {},
   search: null,
   nodeSlider: true,
   objPage: {
@@ -15,6 +20,11 @@ export const state = () => ({
 
 export const mutations = {
   getDataBook: (state, data) => state.DataBook = data,
+  getRankBooks: (state, payload) => {
+    state.dataTopDay = payload.day;
+    state.dataTopWeek = payload.week;
+    state.dataTopMonth = payload.month;
+  },
   searchBook: (state, text) => {
     state.search = text
     if (!text) {
@@ -53,6 +63,38 @@ export const mutations = {
 export const actions = {
   user_DataBook({ commit }, data) {
     commit('getDataBook', data)
+  },
+  async user_getRankBooks({ commit }) {
+    try {
+      const day = await axios.get("https://backend-guideline-api.vais.vn/api/books", {
+        params: {
+          page: 1,
+          limit: 10,
+          search: 'Girl',
+        },
+      })
+      const week = await axios.get("https://backend-guideline-api.vais.vn/api/books", {
+        params: {
+          page: 1,
+          limit: 10,
+          search: 'Sex',
+        },
+      })
+      const month = await axios.get("https://backend-guideline-api.vais.vn/api/books", {
+        params: {
+          page: 1,
+          limit: 10,
+          search: 'Smile',
+        },
+      })
+      commit('getRankBooks', {
+        day: day.data.data,
+        week: week.data.data,
+        month: month.data.data,
+      })
+    } catch (error) {
+      console.log("error network", error);
+    }
   },
   user_search({ commit }, text) {
     console.log('label search', text);
