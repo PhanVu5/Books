@@ -49,7 +49,6 @@
 </template>
 
 <script>
-import { ref } from "vue";
 export default {
     data() {
         return {
@@ -58,6 +57,7 @@ export default {
         }
     },
     created() {
+        this.$store.dispatch('user/user_getRankBooks');
         this.RankBooks = this.RankDay
     },
     watch: {
@@ -81,7 +81,7 @@ export default {
             const refs = this.$refs;
             refs.type_top.querySelector('.slomotion').setAttribute("class", "slomotion");
             refs.type_top.querySelector('.box_rank').setAttribute("class", "box_rank none");
-
+            this.RankBooks = [];
             if (classActive === 'day') {
                 this.RankBooks = this.RankDay;                
             } else if (classActive === 'week') {
@@ -94,8 +94,6 @@ export default {
             refs.type_top.querySelector('.week').setAttribute("class", "week");
             refs.type_top.querySelector('.month').setAttribute("class", "month");
             refs.type_top.querySelector(`.${classActive}`).classList.add('active');
-            this.$store.dispatch('user/user_getRankBooks');
-
 
             refs.type_top.querySelector('.box_rank').classList.remove('none');
             refs.type_top.querySelector('.slomotion').classList.add('none');
