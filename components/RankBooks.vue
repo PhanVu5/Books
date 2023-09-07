@@ -56,8 +56,8 @@ export default {
             RankBooks: [],
         }
     },
-    created() {
-        this.$store.dispatch('user/user_getRankBooks');
+    async created() {
+        await this.$store.dispatch('user/user_getRankBooks');
         this.RankBooks = this.RankDay
     },
     watch: {
@@ -241,6 +241,9 @@ export default {
     background-position: right center;
 }
 
+.table_box_rank img{
+    height: 100%;
+}
 .table_box_rank img,
 .rank_menu .table_box_rank {
     transition: all .3s ease-in-out;
