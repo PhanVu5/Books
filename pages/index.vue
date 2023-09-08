@@ -232,8 +232,8 @@ export default {
     // Router
     transformPages(Obj) {
       this.$router.push({
-        name: 'boo',
-        path: '/:book/:id',
+        name: 'book',
+        path: '/:book/',
         params: { book: 'example', id: `${Obj.id}` },
         query: { id: `${Obj.id}`, book_id: `${Obj.id_book}` },
 
