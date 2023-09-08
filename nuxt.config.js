@@ -61,5 +61,11 @@ export default {
   },
   router: {
     base: '/app/'
-  }
+  },
+  loading: {
+    color: 'blue', // Màu của loading bar
+    height: '5px', // Chiều cao của loading bar
+    continuous: true, // Hiển thị liên tục
+    duration: 3000, // Thời gian tối đa loading (ms)
+  },
 }

@@ -75,14 +75,6 @@ export default {
             refs.type_top.querySelector('.slomotion').setAttribute("class", "slomotion");
             refs.type_top.querySelector('.box_rank').setAttribute("class", "box_rank none");
 
-
-            await Promise((resolve) => {
-                setTimeout(() => {
-                    resolve()
-                }, 5000);
-            })
-
-            this.RankBooks = [];
             if (classActive === 'day') {
                 this.RankBooks = this.RankDay;                
             } else if (classActive === 'week') {
