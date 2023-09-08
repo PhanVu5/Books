@@ -60,11 +60,7 @@ export default {
   build: {
   },
   router: {
-    base: '/app/',
-    extendRoutes(routes, resolve) {
-      
-      sortRoutes(routes)
-    }
+    base: '/HSA256/'
   },
   loading: {
     color: 'blue', // Màu của loading bar
