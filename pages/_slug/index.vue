@@ -255,7 +255,7 @@ export default {
       like: 0,
     }
   },
-  async created() {
+  async mounted () {
     console.log('pageDetail');
     this.idBookMain = this.$route.query.id;
     this.book_id = this.$route.query.book_id;
