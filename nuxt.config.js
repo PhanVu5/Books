@@ -60,7 +60,11 @@ export default {
   build: {
   },
   router: {
-    base: '/app/'
+    base: '/app/',
+    extendRoutes(routes, resolve) {
+      
+      sortRoutes(routes)
+    }
   },
   loading: {
     color: 'blue', // Màu của loading bar
