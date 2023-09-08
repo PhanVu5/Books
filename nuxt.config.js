@@ -60,7 +60,7 @@ export default {
   build: {
   },
   router: {
-    base: '/HSA256/'
+    base: '/'
   },
   loading: {
     color: 'blue', // Màu của loading bar
