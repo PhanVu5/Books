@@ -255,7 +255,11 @@ export default {
         this.moreOrLess = this.moreOrLess.filter(e => e !== keyId)
       }
     },
+    ScrollHeader(){
+
+    }
   },
+  
 };
 </script>
 
