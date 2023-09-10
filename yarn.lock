@@ -1561,10 +1561,6 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
-"@fancyapps/fancybox@https://github.com/fancyapps/fancybox":
-  version "3.5.7"
-  resolved "https://github.com/fancyapps/fancybox#504a80a6d0800598d41fc052910e8797f50ecc8b"
-
 "@fancyapps/fancybox@https://github.com/fancyapps/fancybox#5cda5b529ce3fb6c167a55d42ee5a316e921d95f":
   version "3.0.48"
   resolved "https://github.com/fancyapps/fancybox#5cda5b529ce3fb6c167a55d42ee5a316e921d95f"

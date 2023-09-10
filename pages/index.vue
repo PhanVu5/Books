@@ -6,23 +6,23 @@
       <div class="slider" v-if="SliderBook">
         <h2 class="text">Recommended book > </h2>
         <VueSlickCarousel class="my_carousel" v-bind="settings">
-          <div class="slider_items" v-for="slider in 10" :key="slider">
+          <div class="slider_items" v-for="slider in 9" :key="slider">
             <div class="border_img_slider">
-              <img class="img_book_slider" :src="DataBook.items[slider]?.cover_link" alt=""
-                @click="transformPages({ id: DataBook.items[slider]?.id, id_book: DataBook.items[slider]?.book_id })">
+              <img class="img_book_slider" :src="DataSlide.items[slider]?.cover_link" alt=""
+                @click="transformPages({ id: DataSlide.items[slider]?.id, id_book: DataSlide.items[slider]?.book_id })">
             </div>
             <div class="text_book_slider">
               <p class="text_title_hover"
-                @click="transformPages({ id: DataBook.items[slider]?.id, id_book: DataBook.items[slider]?.book_id })">
-                {{ DataBook.items[slider]?.title }}
+                @click="transformPages({ id: DataSlide.items[slider]?.id, id_book: DataSlide.items[slider]?.book_id })">
+                {{ DataSlide.items[slider]?.title }}
               </p>
               <span>
                 <font-awesome-icon :icon="['fas', 'star']" />
-                {{ ' ' + DataBook.items[slider]?.average_rating }}
+                {{ ' ' + DataSlide.items[slider]?.average_rating }}
               </span>
             </div>
             <div class="text_title">
-              <p class="text_title_hover">{{ DataBook.items[slider]?.title }}</p>
+              <p class="text_title_hover">{{ DataSlide.items[slider]?.title }}</p>
             </div>
           </div>
         </VueSlickCarousel>
@@ -78,9 +78,10 @@
               </span>
             </div>
             <div class="want_to_read">
-              <button class="review" @click="transformPages({ id: book?.id, id_book: book?.book_id })">Want to read</button>
+              <button class="review" @click="transformPages({ id: book?.id, id_book: book?.book_id })">Want to
+                read</button>
             </div>
-  
+
             <div class="votes_css">
               <div class="star">
                 <font-awesome-icon :icon="['fas', 'star']" style="color: #e87400;" v-if="book?.average_rating" />
@@ -100,9 +101,9 @@
     <!-- // Pagination -->
     <div class="pagination_main">
       <p>Current page: {{ currentPage.page }}</p>
-      <button @click="getBook">
+      <button @click="getBook(), scrollToTop()">
         <pagination :totalPages="currentPage.totalPages" :perPage="currentPage.limitPage" :currentPage="currentPage.page"
-          @pagechanged="onPageChange" />
+          @pagechanged="onPageChange"/>
       </button>
     </div>
 
@@ -184,6 +185,9 @@ export default {
     DataBook() {
       return this.$store.state.user.DataBook
     },
+    DataSlide() {
+      return this.$store.state.user.dataTopMonth;
+    },
     SliderBook() {
       return this.$store.state.user.nodeSlider
     },
@@ -203,7 +207,7 @@ export default {
     currentPage() {
       return this.$store.state.user.objPage;
     },
-    
+
   },
   methods: {
     // Get
@@ -255,11 +259,14 @@ export default {
         this.moreOrLess = this.moreOrLess.filter(e => e !== keyId)
       }
     },
-    ScrollHeader(){
-
-    }
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth', // Sử dụng cuộn mượt
+      });
+    },
   },
-  
+
 };
 </script>
 

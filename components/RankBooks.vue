@@ -49,9 +49,9 @@ export default {
             RankBooks: [],
         }
     },
-    async created() {
-        await this.$store.dispatch('user/user_getRankBooks');
-        this.RankBooks = this.RankDay
+    mounted() {
+        this.OptionTypeTop('day')
+
     },
     watch: {
         disiable() {
@@ -72,21 +72,23 @@ export default {
     methods: {
         async OptionTypeTop(classActive) {
             const refs = this.$refs;
+            refs.type_top.querySelector('.day').setAttribute("class", "day");
+            refs.type_top.querySelector('.week').setAttribute("class", "week");
+            refs.type_top.querySelector('.month').setAttribute("class", "month");
+            refs.type_top.querySelector(`.${classActive}`).classList.add('active');
+
             refs.type_top.querySelector('.slomotion').setAttribute("class", "slomotion");
             refs.type_top.querySelector('.box_rank').setAttribute("class", "box_rank none");
 
+            await this.$store.dispatch('user/user_getRankBooks');
             if (classActive === 'day') {
-                this.RankBooks = this.RankDay;                
+                this.RankBooks = this.RankDay;
             } else if (classActive === 'week') {
                 this.RankBooks = this.RankWeek;
             } else {
                 this.RankBooks = this.RankMonth;
             }
 
-            refs.type_top.querySelector('.day').setAttribute("class", "day");
-            refs.type_top.querySelector('.week').setAttribute("class", "week");
-            refs.type_top.querySelector('.month').setAttribute("class", "month");
-            refs.type_top.querySelector(`.${classActive}`).classList.add('active');
 
             refs.type_top.querySelector('.box_rank').classList.remove('none');
             refs.type_top.querySelector('.slomotion').classList.add('none');
@@ -98,7 +100,7 @@ export default {
 .rank_menu {
     position: relative;
     bottom: 11rem;
-    left: 1.5%;
+    left: 3.5%;
 }
 
 .section-bar {
@@ -234,9 +236,10 @@ export default {
     background-position: right center;
 }
 
-.table_box_rank img{
+.table_box_rank img {
     height: 100%;
 }
+
 .table_box_rank img,
 .rank_menu .table_box_rank {
     transition: all .3s ease-in-out;

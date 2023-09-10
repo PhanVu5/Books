@@ -1,14 +1,16 @@
 <template>
     <div>
-        <div id="header">
+        <div id="header" ref="head_frame">
             <div ref="user_account" class="header_method">
 
                 <button class="title_page" @click="BackHome()" title="Back Home">
-                    <img class="logo" style="padding-bottom: 3px;" src="@/assets/logo/pages-book-green-300x240.jpg"
-                        alt="Logo app">
-                    <p>Word Village</p>
+                    <a @click="scrollToTop()">
+                        <img class="logo" style="padding-bottom: 3px;" src="@/assets/logo/pages-book-green-300x240.png"
+                            alt="Logo app">
+                        <p>Word Village</p>
+                    </a>
                 </button>
-                <div class="research" :class="(signInDone) ? 'search_logout' : 'search'">
+                <div class="research search">
                     <input class="ip_search" type="text" placeholder="Search in the bookstore" v-model="search"
                         v-on:keyup.enter="onPageChangeHome(), getBook()">
                     <button class="btn_search" @click="onPageChangeHome(), getBook()">
@@ -34,7 +36,7 @@
                     <div class="user">
                         <img class="img_user_profile" src="@/assets/logo/lover.png" :alt="'Loading Img ...'" />
                         <tippy interactive :animate-fill="false" placement="bottom" arrowType="round" theme="light"
-                            trigger="click" arrow>
+                            :trigger="scrollPosition>=98?'mouseenter focus':'click'" arrow>
                             <div class="function_user">
                                 <button class="li_profile">
                                     <font-awesome-icon :icon="['far', 'user']" />
@@ -47,14 +49,14 @@
                                 </button>
                             </div>
                         </tippy>
-    
                     </div>
                 </div>
             </div>
             <nav class="nav_header">
                 <div class="direction">
                     <ul class="contain_direction">
-                        <li><button class="home" @click="BackHome()" title="Back Home">
+                        <li class="home nav_color_position" @click="OptionTypeTop('home')"><button @click="BackHome()"
+                                title="Back Home">
                                 Home
                             </button>
                         </li>
@@ -65,15 +67,15 @@
                                 <li>Book Upload</li>
                             </ul>
                         </li>
-                        <li><button class="home" @click="BackHome()">
-                                Browse
+                        <li class="borrow" @click="OptionTypeTop('borrow')"><button @click="BackHome()">
+                                Borrow
                             </button>
                         </li>
-                        <li><button class="home" @click="BackHome()">
+                        <li class="community" @click="OptionTypeTop('community')"><button @click="BackHome()">
                                 Community
                             </button>
                         </li>
-                        <li class="li_profile">
+                        <li class="li_profile" @click="OptionTypeTop('li_profile')">
                             <font-awesome-icon :icon="['fas', 'book-bookmark']" />
                             Libary
                         </li>
@@ -105,14 +107,11 @@ export default {
     },
     data() {
         return {
+            scrollPosition: 0,
             urlBook: "https://backend-guideline-api.vais.vn/api/books",
             search: '',
             objPage: null,
         }
-    },
-    created() {
-        this.getBook();
-        this.objPage = { ...this.currentPage };
     },
     computed: {
         getSearch() {
@@ -132,7 +131,52 @@ export default {
             return this.$store.state.user.objPage;
         }
     },
+    watch: {
+        scrollPosition() {
+            this.handleScroll();
+        }
+    },
+    created() {
+        this.getBook();
+        this.objPage = { ...this.currentPage };
+    },
+    mounted() {
+        console.log('ref here', this.$refs.head_frame);
+        // Thêm sự kiện cuộn vào window để cập nhật vị trí cuộn
+        window.addEventListener('scroll', this.handleScroll);
+
+        // Lấy vị trí cuộn ban đầu
+        this.scrollPosition = window.pageYOffset;
+    },
+    beforeDestroy() {
+        // Loại bỏ sự kiện cuộn khi không còn cần thiết
+        window.removeEventListener('scroll', this.handleScroll);
+    },
     methods: {
+        handleScroll() {
+            const refs = this.$refs;
+            // Cập nhật vị trí cuộn khi sự kiện cuộn xảy ra
+            this.scrollPosition = window.pageYOffset;
+            if (this.scrollPosition >= 99) {
+                refs.head_frame.querySelector('.header_method').classList.add('none');
+            } else {
+                refs.head_frame.querySelector('.header_method').setAttribute('class', 'header_method')
+            }
+        },
+        async OptionTypeTop(classActive) {
+            const refs = this.$refs;
+            refs.head_frame.querySelector('.home').setAttribute("class", "home");
+            refs.head_frame.querySelector('.borrow').setAttribute("class", "borrow");
+            refs.head_frame.querySelector('.community').setAttribute("class", "community");
+            refs.head_frame.querySelector('.li_profile').setAttribute("class", "li_profile");
+            refs.head_frame.querySelector(`.${classActive}`).classList.add('nav_color_position');
+        },
+        scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth', // Sử dụng cuộn mượt
+            });
+        },
         // Get
         async getBook() {
             try {
@@ -219,12 +263,12 @@ export default {
 }
 
 #header .header_method .search {
-    margin: 0px 13rem;
+    margin: 0px auto;
 }
 
-.search_logout {
+/* .search_logout {
     margin: 0px auto !important;
-}
+} */
 
 #header .header_method .notify:hover,
 #header .header_method .notify {
@@ -285,10 +329,10 @@ export default {
     text-align: left;
     margin: 5px 0;
     border-radius: 5px;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
-.function_user>button:hover{
+.function_user>button:hover {
     background-color: #bbb8b882;
 }
 

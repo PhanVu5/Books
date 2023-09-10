@@ -15,7 +15,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
 
@@ -63,8 +63,8 @@ export default {
     base: '/'
   },
   loading: {
-    color: 'blue', // Màu của loading bar
-    height: '5px', // Chiều cao của loading bar
+    color: '#7BB11D', // Màu của loading bar
+    height: '3px', // Chiều cao của loading bar
     continuous: true, // Hiển thị liên tục
     duration: 3000, // Thời gian tối đa loading (ms)
   },
