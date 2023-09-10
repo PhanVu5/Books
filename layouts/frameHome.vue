@@ -91,19 +91,21 @@
         <div class="acount" v-if="signUp" @click="closeSignUp()">
         </div>
         <SignUp :signup="signUp" @Close_Account="handleDataClose"></SignUp>
-        <Nuxt />
+        <Nuxt/>
 
-
+        <Footer></Footer>
     </div>
 </template>
 
 <script >
-import SignUp from "@/components/SignUp.vue"
-import SignIn from "@/components/SignIn.vue"
+import SignUp from "@/components/SignUp.vue";
+import SignIn from "@/components/SignIn.vue";
+import Footer from "@/components/Footer.vue"
 export default {
     components: {
         SignUp,
-        SignIn
+        SignIn,
+        Footer,
     },
     data() {
         return {

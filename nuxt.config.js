@@ -22,6 +22,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     // CSS file in the project
+    '@/assets/scss/main.scss', 
     '@/assets/css/main.css',
     '@/assets/css/account.css'
   ],
@@ -58,6 +59,15 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    // ...
+    loaders: {
+      sass: {
+        implementation: require('sass'),
+      },
+      scss: {
+        implementation: require('sass'),
+      },
+    },
   },
   router: {
     base: '/'

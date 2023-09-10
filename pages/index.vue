@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <nav id="nav" class="navbar is-transparent is-fixed-top"></nav>
+    
     <!-- Content -->
     <content class="content_main">
       <div class="slider" v-if="SliderBook">
@@ -149,11 +149,11 @@ export default {
         "infinite": true,
         "speed": 500,
         "autoplay": true, // Tự động nhảy slider
-        "autoplaySpeed": 3000, // Tốc độ tự động nhảy (3 giây)
+        "autoplaySpeed": 2000, // Tốc độ tự động nhảy (3 giây)
         "arrows": true,
         "useTransform": true,
         "slidesToShow": 7,
-        "slidesToScroll": 2,
+        "slidesToScroll": 1,
         "touchThreshold": 3,
         "touchMove": true,
         "responsive": [

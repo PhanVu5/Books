@@ -21,7 +21,7 @@
                 </div>
             </form>
         </div>
-        <slot></slot>
+        
     </div>
 </template>
 

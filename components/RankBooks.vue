@@ -33,7 +33,7 @@
 
             <Loading class="none"></Loading>
         </div>
-        <slot></slot>
+
     </div>
 </template>
 
