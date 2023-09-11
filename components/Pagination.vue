@@ -64,7 +64,13 @@ export default {
             disabledLast: null,
         }
     },
-    updated() {
+    watch: {
+        currentPage(){
+            this.isInFirstPage();
+            this.isInLastPage();
+        }
+    },
+    mounted() {
         this.isInFirstPage();
         this.isInLastPage();
     },

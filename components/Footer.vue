@@ -38,6 +38,7 @@
 
 <style scoped>
 .container_footer {
+    clear: both;
     position: relative;
     color: #2d2929;
     bottom: 0;

@@ -170,10 +170,13 @@ body {
 }
 
 #content {
+    float: left;
     padding: 18px;
     margin: calc(var(--height-header) + 2rem) 0;
     margin-left: 6%;
-    width: 70%;
+    margin-bottom: 0;
+    width: 70vw;
+    min-height: 955px;
 }
 
 .slider {

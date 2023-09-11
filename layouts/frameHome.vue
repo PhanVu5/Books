@@ -67,8 +67,8 @@
                                 <li>Book Upload</li>
                             </ul>
                         </li>
-                        <li class="borrow" @click="OptionTypeTop('borrow')"><button @click="BackHome()">
-                                Borrow
+                        <li class="history" @click="OptionTypeTop('history')"><button @click="BackHome()">
+                                History
                             </button>
                         </li>
                         <li class="community" @click="OptionTypeTop('community')"><button @click="BackHome()">
@@ -168,7 +168,7 @@ export default {
         async OptionTypeTop(classActive) {
             const refs = this.$refs;
             refs.head_frame.querySelector('.home').setAttribute("class", "home");
-            refs.head_frame.querySelector('.borrow').setAttribute("class", "borrow");
+            refs.head_frame.querySelector('.history').setAttribute("class", "history");
             refs.head_frame.querySelector('.community').setAttribute("class", "community");
             refs.head_frame.querySelector('.li_profile').setAttribute("class", "li_profile");
             refs.head_frame.querySelector(`.${classActive}`).classList.add('nav_color_position');

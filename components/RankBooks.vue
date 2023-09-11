@@ -99,8 +99,8 @@ export default {
 <style scoped>
 .rank_menu {
     position: relative;
-    bottom: 11rem;
-    left: 3.5%;
+    top: 12rem;
+    right: 5.2%;
 }
 
 .section-bar {

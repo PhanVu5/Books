@@ -8,10 +8,15 @@
             <img class="img_book" :src="Data.cover_link" alt="Loading">
           </div>
           <div class="button_read_buy">
-            
+
             <a :href="selectedBook">
-            <button class="read" style="background-color: #3f8363; color: #fff;">
+              <button class="read" style="background-color: #3f8363; color: #fff;">
                 Read
+              </button>
+            </a>
+            <a href="">
+              <button class="buy" style="border: 2px solid #3f8363;">
+                Borrow
               </button>
             </a>
             <a :href="Data.amazon_redirect_link">
@@ -255,7 +260,7 @@ export default {
       like: 0,
     }
   },
-  async created () {
+  async created() {
     console.log('pageDetail');
     this.idBookMain = this.$route.query.id;
     this.book_id = this.$route.query.book_id;
@@ -265,8 +270,7 @@ export default {
     this.rateCategory();
     this.getDataPeople()
     this.getDataUser();
-    const idx = Math.floor(Math.random() * this.Read.length);
-    this.selectedBook = this.Read[idx];
+    this.fnc_Read()
   },
   computed: {
     DataBook() {
@@ -412,6 +416,10 @@ export default {
     },
     checkCloseDelete(check) {
       this.checkDeleteCmt = check;
+    },
+    fnc_Read() {
+      const idx = Math.floor(Math.random() * this.Read.length);
+      this.selectedBook = this.Read[idx];
     },
     // Like
     checkLiked(data_id) {
