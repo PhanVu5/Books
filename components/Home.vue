@@ -29,73 +29,75 @@
 
             <div id="content">
                 <h2 style="margin-left: 13px;" class="text" v-if="SliderBook">Newly updated books > </h2>
-                <div class="box" v-for="(book, index) in DataBook?.items" :key="index">
+                <div class="box_book">
+                    <div class="box" v-for="(book, index) in DataBook?.items" :key="index">
 
-                    <div class="box_view" style="display: inline">
-                        <img class="img_book_css" :src="book?.cover_link" :alt="'Loading Img ...'"
-                            @click="transformPages({ id: book.id, id_book: book.book_id })" />
-                        <tippy interactive :animateFill='false' placement="right" theme="honeybee" arrowType="round"
-                            trigger="mouseenter" arrow>
-                            <div>
-                                <div class="home_box_review">
-                                    <div class="detail_book">
-                                        <div class="home_title_reviewbook"
-                                            @click="transformPages({ id: book.id, id_book: book.book_id })">
-                                            {{ book.title }}
+                        <div class="box_view" style="display: inline">
+                            <img class="img_book_css" :src="book?.cover_link" :alt="'Loading Img ...'"
+                                @click="transformPages({ id: book.id, id_book: book.book_id })" />
+                            <tippy interactive :animateFill='false' placement="right" theme="honeybee" arrowType="round"
+                                trigger="mouseenter" arrow>
+                                <div>
+                                    <div class="home_box_review">
+                                        <div class="detail_book">
+                                            <div class="home_title_reviewbook"
+                                                @click="transformPages({ id: book.id, id_book: book.book_id })">
+                                                {{ book.title }}
+                                            </div>
+                                            by<span class="home_name_author"><a :href="book.author_link">{{ ' ' +
+                                                book.author
+                                            }}</a></span>
+                                            <div class="home_review_star">
+                                                <star-rating v-model="book.average_rating" :show-rating="false"
+                                                    :read-only="true" :increment="0.01" :inline="true" :star-size="17"
+                                                    active-color="#e87400"></star-rating>
+                                                <p class="text_rate"> {{ book.average_rating }}</p>
+                                                <span v-if="book.rating_count">&#160; {{ book.rating_count }} rating</span>
+                                                <span v-if="book.review_count">&#160; {{ book.review_count }} review</span>
+                                            </div>
                                         </div>
-                                        by<span class="home_name_author"><a :href="book.author_link">{{ ' ' + book.author
-                                        }}</a></span>
-                                        <div class="home_review_star">
-                                            <star-rating v-model="book.average_rating" :show-rating="false"
-                                                :read-only="true" :increment="0.01" :inline="true" :star-size="17"
-                                                active-color="#e87400"></star-rating>
-                                            <p class="text_rate"> {{ book.average_rating }}</p>
-                                            <span v-if="book.rating_count">&#160; {{ book.rating_count }} rating</span>
-                                            <span v-if="book.review_count">&#160; {{ book.review_count }} review</span>
+                                        <div class="home_info_author">
+                                            <p v-if="checkMore(index) === '...more' && book.description.length > 200">
+                                                {{ book.description.slice(0, 200) }}
+                                                <button class="more" @click="seeMorePrgh(index)">
+                                                    {{ checkMore(index) }}
+                                                </button>
+                                            </p>
+                                            <p v-else>
+                                                {{ book.description }}
+                                                <button class="more" @click="seeMorePrgh(index)"
+                                                    v-if="book.description.length > 200">
+                                                    {{ checkMore(index) }}
+                                                </button>
+                                            </p>
                                         </div>
-                                    </div>
-                                    <div class="home_info_author">
-                                        <p v-if="checkMore(index) === '...more' && book.description.length > 200">
-                                            {{ book.description.slice(0, 200) }}
-                                            <button class="more" @click="seeMorePrgh(index)">
-                                                {{ checkMore(index) }}
-                                            </button>
-                                        </p>
-                                        <p v-else>
-                                            {{ book.description }}
-                                            <button class="more" @click="seeMorePrgh(index)"
-                                                v-if="book.description.length > 200">
-                                                {{ checkMore(index) }}
-                                            </button>
-                                        </p>
                                     </div>
                                 </div>
+                            </tippy>
+                            <div class="text_book">
+                                <h3 @click="transformPages({ id: book.id, id_book: book.book_id })">
+                                    {{ book?.title }}
+                                </h3>
+                                <span class="box_author">
+                                    {{ book?.author }}
+                                </span>
                             </div>
-                        </tippy>
-                        <div class="text_book">
-                            <h3 @click="transformPages({ id: book.id, id_book: book.book_id })">
-                                {{ book?.title }}
-                            </h3>
-                            <span class="box_author">
-                                {{ book?.author }}
-                            </span>
-                        </div>
-                        <div class="want_to_read">
-                            <button class="review" @click="transformPages({ id: book?.id, id_book: book?.book_id })">Want to
-                                read</button>
-                        </div>
+                            <div class="want_to_read">
+                                <button class="review"
+                                    @click="transformPages({ id: book?.id, id_book: book?.book_id })">Want to
+                                    read</button>
+                            </div>
 
-                        <div class="votes_css">
-                            <div class="star">
-                                <font-awesome-icon :icon="['fas', 'star']" style="color: #e87400;"
-                                    v-if="book?.average_rating" />
-                                <font-awesome-icon :icon="['far', 'star']" v-else />
-                                <h2> {{ book?.average_rating }} </h2>
+                            <div class="votes_css">
+                                <div class="star">
+                                    <font-awesome-icon :icon="['fas', 'star']" style="color: #e87400;"
+                                        v-if="book?.average_rating" />
+                                    <font-awesome-icon :icon="['far', 'star']" v-else />
+                                    <h2> {{ book?.average_rating }} </h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 <!-- <RankBooks :RankDay="RankDay"></RankBooks> -->
             </div>
@@ -118,11 +120,13 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 // *********************************
 import StarRating from 'vue-star-rating';
 import RankBooks from '@/components/RankBooks';
+import Loading from "@/components/Loading";
 import tippy from 'tippy.js';
 import Pagination from '@/components/Pagination.vue';
 export default {
     components: {
         StarRating,
+        Loading,
         RankBooks,
         VueSlickCarousel,
         Pagination,
@@ -188,8 +192,15 @@ export default {
         },
 
     },
+    watch:{
+    
+    },
     created() {
+        this.getBook();
         this.objPage = { ...this.currentPage };
+    },
+    updated(){
+        this.DataBook
     },
     methods: {
         // Get
@@ -202,12 +213,11 @@ export default {
                         search: this.getSearch,
                     },
                 });
-                console.log('getBook Index', data);
                 this.$store.dispatch('user/user_DataBook', data);
                 this.objPage.totalPages = data.totalPages;
                 this.$store.dispatch('user/user_CurrentPage', this.objPage);
             } catch (error) {
-                console.log("error network", error);
+                console.log("error get Data Books", error);
             }
         },
         // Router
@@ -244,7 +254,6 @@ export default {
         scrollToTop() {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth', // Sử dụng cuộn mượt
             });
         },
     },

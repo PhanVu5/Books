@@ -5,7 +5,7 @@ export const state = () => ({
   dataTopDay: {},
   dataTopWeek: {},
   dataTopMonth: {},
-  search: null,
+  // search: null,
   nodeSlider: true,
   objPage: {
     page: 1,
@@ -26,7 +26,7 @@ export const mutations = {
     state.dataTopMonth = payload.month;
   },
   searchBook: (state, text) => {
-    state.search = text
+    // state.search = text
     if (!text) {
       state.nodeSlider = true;
     } else {
@@ -44,11 +44,11 @@ export const mutations = {
   },
   LikeDone: (state, ObjLike) => {
     // state.DataBook.items[ObjLike.id].five_star_ratings++;
-    state.user.Liked.push(ObjLike.data_id);
+    state.user.LikeCmtBook.push(ObjLike.data_id);
   },
   UnLike: (state, ObjLike) => {
     // state.DataBook.items[ObjLike.id].five_star_ratings--;
-    state.user.Liked = state.user.Liked.filter(id => id !== ObjLike.data_id)
+    state.user.LikeCmtBook = state.user.LikeCmtBook.filter(id => id !== ObjLike.data_id)
   },
   UserReview: (state, Array) => {
     state.user_review = Array
@@ -117,6 +117,7 @@ export const actions = {
   },
   user_Liked({ commit }, liked) {
     console.log('like done');
+    //Like Cmt Book
     commit('LikeDone', liked);
   },
   user_UnLike({ commit }, idUnlike) {

@@ -9,7 +9,7 @@
           </div>
           <div class="button_read_buy">
 
-            <a :href="selectedBook">
+            <a :href="fnc_Read()">
               <button class="read" style="background-color: #3f8363; color: #fff;">
                 Read
               </button>
@@ -270,7 +270,6 @@ export default {
     this.rateCategory();
     this.getDataPeople()
     this.getDataUser();
-    this.fnc_Read()
   },
   computed: {
     DataBook() {
@@ -285,8 +284,11 @@ export default {
     userAcount() {
       return this.$store.state.user.user !== null ? this.$store.state.user.user : {};
     },
+    HistoryUserRead(){
+            return this.$store.state.user.user !== null ? this.$store.state.user.user.HistoryRead : [];
+    },
     checkLike() {
-      return this.$store.state.user.user !== null ? this.$store.state.user.user.Liked : [];
+      return this.$store.state.user.user !== null ? this.$store.state.user.user.LikeCmtBook : [];
     },
   },
   watch: {
@@ -308,7 +310,6 @@ export default {
     async getDataUser() {
       try {
         if (!this.signInDone) {
-          console.log(1);
           const url = new URL(this.numUser + '/');
           url.searchParams.append('id_book', `${this.book_id}`);
           url.searchParams.append('userId', `${this.$store.state.user.user.id}`);
@@ -326,7 +327,6 @@ export default {
     async putDataUser() {
       if (!this.signInDone) {
         if (!this.idStore) {
-          console.log(2);
           this.Data.rating_count++;
           if (this.rating === 5) {
             this.Data.five_star_ratings++;
@@ -361,16 +361,13 @@ export default {
           },
         })
       } else {
-        // this.rating = 0;
-        // console.log('rating', this.rating);
-        // console.log('trap');
         this.$store.dispatch("user/user_NodeSignIn", true);
       }
     },
     //Comment
     async getDataPeople() {
       try {
-        console.log(3);
+        
         const url = new URL(this.urlPeople + '/');
         url.searchParams.append('id_book', `${this.book_id}`);
         const response = await this.$axios.$get(url);
@@ -418,8 +415,14 @@ export default {
       this.checkDeleteCmt = check;
     },
     fnc_Read() {
+      if (this.userAcount !== {}) {
+        const read = this.$axios.$put(this.urlUser + `/${this.$store.state.user.user.id}`,{
+          HistoryRead: [...this.HistoryUserRead,`${this.idBookMain}`]
+        })
+      }
       const idx = Math.floor(Math.random() * this.Read.length);
       this.selectedBook = this.Read[idx];
+      return this.selectedBook;
     },
     // Like
     checkLiked(data_id) {
@@ -446,7 +449,7 @@ export default {
             await this.$axios.$put(
               this.urlUser + `/${this.$store.state.user.user.id}`,
               {
-                Liked: this.checkLike,
+                LikeCmtBook: this.checkLike,
               }
             );
           } else {
@@ -459,7 +462,7 @@ export default {
             await this.$axios.$put(
               this.urlUser + `/${this.$store.state.user.user.id}`,
               {
-                Liked: this.checkLike,
+                LikeCmtBook: this.checkLike,
               }
             );
           }

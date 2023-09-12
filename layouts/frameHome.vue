@@ -206,9 +206,9 @@ export default {
         // BackHome
         BackHome() {
             this.search = null
-            this.getBook();
-            this.$store.dispatch('user/user_search', null)
+            // this.$store.dispatch('user/user_search', null)
             this.onPageChangeHome();
+            this.getBook();
         },
         handleDataClose(var_sign) {
             this.$store.dispatch('user/user_NodeSignIn', var_sign);
