@@ -64,7 +64,7 @@ export const actions = {
   user_DataBook({ commit }, data) {
     commit('getDataBook', data)
   },
-  async user_getRankBooks({ commit }) {
+  async user_getRankBooks({ commit }) { // Đang lỗi khởi động slider không đọc được dữ liệu
     try {
       const day = await axios.get("https://backend-guideline-api.vais.vn/api/books", {
         params: {

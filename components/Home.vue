@@ -195,12 +195,12 @@ export default {
     watch:{
     
     },
-    created() {
-        this.getBook();
+    async created() {
+        await this.$store.dispatch('user/user_getRankBooks');
         this.objPage = { ...this.currentPage };
     },
     updated(){
-        this.DataBook
+        
     },
     methods: {
         // Get
